@@ -10,7 +10,7 @@ An SSIS (SQL Server Integration Services) package is a powerful ETL (Extract, Tr
 
 ### Complexity and Scale
 
-- For a project involving 350 tables, an SSIS package can easily contain more than 25,000 lines of XML code.
+- For a project involving 350 tables, an SSIS package can easily contain more than 60.000 lines of XML code.
 - These packages can become extremely complex, with intricate data flows, transformations, and control flow logic.
 - Manually creating such packages would be incredibly time-consuming and error-prone.
 

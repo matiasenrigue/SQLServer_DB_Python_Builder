@@ -331,13 +331,13 @@ def add_length_or_precision(attributes: dict, data_type: str, length:str, precis
             
             if pd.notna(precision):
                 if int(precision) > 0:
-                    attributes[precision_name] = precision
+                    attributes[precision_name] = str(precision)
                 else: 
                     attributes[precision_name] = "2"
             
             if pd.notna(scale):
                 if int(scale) >= 0:
-                    attributes[scale_name] = scale
+                    attributes[scale_name] = str(scale)
                 else: 
                     attributes[scale_name] = "0"
             
@@ -346,7 +346,7 @@ def add_length_or_precision(attributes: dict, data_type: str, length:str, precis
     elif data_type in ['wstr', 'bytes']:
         if pd.notna(length):
             if int(length) > 0:
-                attributes[lenght_name] = length
+                attributes[lenght_name] = str(length)
             else: 
                 attributes[lenght_name] = "1"
                 

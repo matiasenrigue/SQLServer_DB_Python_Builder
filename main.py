@@ -20,46 +20,56 @@ def print_menu():
 
 
 
+def get_user_choice() -> int:
+    """
+    Prompts the user to select a number from the menu.
+
+    Returns:
+        int: The user's menu choice, a number from 1 to 4.
+    """
+    print_menu() 
+    while True:
+        try:
+            choice = int(input("\nEnter a number from 1 to 4: "))
+            if 1 <= choice <= 4:
+                return choice
+            else:
+                print("Invalid number. Please enter a number from 1 to 4.")
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
+            
+
+
+def handle_ssis_creation(data_dict_path: str, output_folder: str) -> None:
+    """
+    Handles SSIS file creation for two origins.
+
+    Args:
+        data_dict_path (str): Path to the data dictionary file.
+        output_folder (str): The folder where output files will be saved.
+    """
+    current_datetime = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+    output_path = os.path.join(output_folder, 'Select_Queries_Oracle.xlsx')
+    df = prepare_data_frame(input_path_file=data_dict_path, output_path_file=output_path)
+    data_dictionary = create_dictionary_from_dataframe(df) 
+
+    for origin in [ORIGIN_1_NAME, ORIGIN_2_NAME]:
+        dict_origin = {origin: data_dictionary[origin]}
+        SSIS_output = os.path.join(output_folder, f"SSIS_{current_datetime}_{origin}.dtsx")
+        create_dtsx(dict_origin, SSIS_output) 
+
+
 
 def main():
 
-    current_datetime = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
     data_dict_path = os.path.join("data", DATA_DICT_FILE)
-    
     output_folder = "output_folder"
-    if not os.path.exists(output_folder):
-        os.makedirs(output_folder)
-    
-    print_menu()
-    while True:
-        try:
-            number = int(input("\nEnter a number from 1 to 4: "))
-            break
-        except:
-            print("Invalid number. Please enter a number from 1 to 4.")
+    os.makedirs(output_folder, exist_ok=True)
 
-                
+    number = get_user_choice()
+
     if number == 1:
-
-        output_path = os.path.join(output_folder,'Select_Queries_Oracle.xlsx')
-        df = prepare_data_frame(
-                            input_path_file= data_dict_path, 
-                            output_path_file= output_path
-                            )
-
-        data_dictionary = create_dictionary_from_dataframe(df)
-
-        # Process both origins separetly separately
-        dict_origin_1 = {ORIGIN_1_NAME: data_dictionary[ORIGIN_1_NAME]}
-        dict_origin_2 = {ORIGIN_2_NAME: data_dictionary[ORIGIN_2_NAME]}
-
-
-        SSIS_output_origin_1 = os.path.join(output_folder, f"SSIS_{current_datetime}_{ORIGIN_1_NAME}.dtsx")
-        create_dtsx(dict_origin_1, SSIS_output_origin_1)
-
-        SSIS_output_origin_2 = os.path.join(output_folder, f"SSIS_{current_datetime}_{ORIGIN_2_NAME}.dtsx")
-        create_dtsx(dict_origin_2, SSIS_output_origin_2)
-
+        handle_ssis_creation(data_dict_path, output_folder) 
 
     elif number == 2:
         output_path = os.path.join(output_folder,'STG_Tables_Creation.xlsx')
@@ -75,10 +85,6 @@ def main():
         output_path = os.path.join(output_folder,'STG_to_ODS_SPs_Creation.xlsx')
         Stored_Procedures_STG_to_ODS(data_dict_path, output_path)
         
-    
-    else:
-        print("Invalid number. Please enter a number from 1 to 4.")
-        main()
 
 
 if __name__ == "__main__":
