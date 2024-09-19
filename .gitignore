@@ -1,0 +1,14 @@
+# Folders to ignore
+SQLServer_DB_Builder.egg-info
+data
+output_folder
+__pycache__/
+
+
+# Confidential files
+.env
+.envrc
+
+
+.DS_Store
+.python-version

@@ -1,0 +1,7 @@
+pandas
+numpy
+openpyxl
+
+# Interact with DBs
+cx_Oracle
+pyodbc
