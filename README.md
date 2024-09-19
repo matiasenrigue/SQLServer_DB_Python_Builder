@@ -12,7 +12,7 @@ This Python project significantly reduced the work time for this project, as cre
 
 While most of the code has been translated to English, some parts remain in Spanish for ease of use by current users and due to the complexity of translating everything.
 
-*For confidentiality reasons, I can't provide the name of the university or the exact details of the time savings, but both can be fact-checked if required during the recruitment process.
+* *For confidentiality reasons, I can't provide the name of the university or the exact details of the time savings, but both can be fact-checked if required during the recruitment process.*
 
 ## Project Overview
 The project facilitates the migration and structuring of data from Oracle databases to SQL Server, creating necessary SSIS packages, SQL statements, and stored procedures.
