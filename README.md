@@ -1,6 +1,6 @@
 # SQL Server DB Python Builder
 
-> **With This Project, I Accelerated Database re-building and Reduced the Allocated Project Time by 86% for a Highly Prestigious Spanish University**
+> **With This Project, I Accelerated Database Building and Reduced the Allocated Project Time by 86% for a Highly Prestigious Spanish University**
 
 - *Time measured in weeks*
 
