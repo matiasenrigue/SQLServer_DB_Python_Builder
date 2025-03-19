@@ -1,5 +1,9 @@
 # SQL Server DB Python Builder
 
+> **With This Project, I Accelerated Database Migration and Reduced the Allocated Project Time by 86% for a Leading Spanish University**
+
+- *Time measured in weeks*
+
 ## Context
 This project is a Python automation I built while working for a data-specialized consultancy in Spain. My task was to build the new structure of the database for one of the most prestigious universities in the country. The database had more than 350 tables that needed to be created, one by one, on multiple occasions:
 
